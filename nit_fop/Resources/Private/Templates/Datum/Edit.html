@@ -1,0 +1,89 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<div id="content"> 
+    <div class="dark-matter">
+    <h1>Projekt: {zeile.projekt.projektname}</h1>
+    <f:form action="update"  name="zeile" object="{zeile}" arguments="{fahrzeug : fahrzeug}" >
+	    <input type="hidden" name="UserBrowser" id="fahrzeug" value="{zeile.fahrzeug.fahrzeugname}">
+	    <input type="hidden" name="UserBrowser" id="datum" value="{datum.datum}">
+	    <label><span>Fahrzeug:({zeile.fahrzeug.fahrzeugname})</span><f:form.select id="fahrzeug" name="fahrzeug" options="{fahrzeuge}" optionValueField="uid" optionLabelField="fahrzeugname" prependOptionLabel="Kein Fahrzeug" prependOptionValue="-" /></label>
+	    <label><span>Projekt:</span><f:form.textfield id="projektname" id="projektname" name="projektname" value="{zeile.projekt.projektname}"/></label>
+	    <f:widget.autocomplete for="projektname" objects="{projekte}" searchProperty="projektname" />
+	    <label><span>Kommentar:</span><f:form.textfield name="kommentar" id="kommentar" value="{zeile.bemerkung}" /></label>
+	    <label><span>Uhrzeit:</span><input type="text" data-role="datebox" data-options='{"mode":"timebox", "overrideSetTimeButtonLabel":"OK","minuteStep": 10, "overrideTitleTimeDialogLabel":"Uhrzeit wählen"}' id="uhrzeit" name="tx_nitfop_nitfop[uhrzeit]" value='{zeile.uhrzeit}' >
+	    <label><span>SMS versenden</span><f:form.checkbox name="sendesms" value="sendesms" id="sendesms" /></label>    
+    <f:form.submit value="Aktualisieren" class="button" id="absenden" />
+
+    </f:form>
+    <f:form action="show" arguments="{datefield : datum.datum }" > 
+    <f:form.submit value="Zurück" class="button" />
+    </f:form>
+    <f:form action="delete" name="zeile" object="{zeile}" >
+
+    <f:form.submit value="Datensatz löschen" class="button" id="delete" />
+    </f:form>
+    </div>
+</div>
+<script type="text/javascript">
+var uri = '<f:uri.action noCacheHash="1" action="sendSms" controller="Datum" pageType="1375437732"/>'
+
+$('#absenden').click(function(){
+    if($("#sendeesms").prop('checked') == true){
+
+	    var fahrzeug = $('#fahrzeug').val();
+	    var projektname = $('#projektname').val();
+	    var kommentar = $('#kommentar').val();
+	    var uhrzeit = $('#uhrzeit').val();
+	    var datum = $('#datum').val();
+	    $.ajax({
+	    url: uri,
+	    data:{
+		"tx_nitfop_nitfop[fahrzeug]":fahrzeug,
+		"tx_nitfop_nitfop[projektname]":projektname,
+		"tx_nitfop_nitfop[kommentar]":kommentar,
+		"tx_nitfop_nitfop[uhrzeit]":uhrzeit,
+		"tx_nitfop_nitfop[datum]":datum,
+		"tx_nitfop_nitfop[modus]": "Aenderung",
+	    }
+	    });	
+    }
+
+});
+$('#delete').click(function(){
+    if($("#keinesms").prop('checked') == false){
+	    var fahrzeug = $('#fahrzeug').val();
+	    var projektname = $('#projektname').val();
+	    var kommentar = $('#kommentar').val();
+	    var uhrzeit = $('#uhrzeit').val();
+	    var datum = $('#datum').val();
+	    $.ajax({
+	    url: uri,
+	    data:{
+		"tx_nitfop_nitfop[fahrzeug]":fahrzeug,
+		"tx_nitfop_nitfop[projektname]":projektname,
+		"tx_nitfop_nitfop[kommentar]":kommentar,
+		"tx_nitfop_nitfop[uhrzeit]":uhrzeit,
+		"tx_nitfop_nitfop[datum]":datum,
+		"tx_nitfop_nitfop[modus]": "Storno",
+	    }
+	    });	
+    }
+
+});
+</script>
+
+</f:section>

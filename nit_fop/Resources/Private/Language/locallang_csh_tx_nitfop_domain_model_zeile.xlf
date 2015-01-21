@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T09:26:53Z" product-name="nit_fop">
+		<header/>
+		<body>
+			<trans-unit id="uhrzeit.description">
+				<source>uhrzeit</source>
+			</trans-unit>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="datum.description">
+				<source>datum</source>
+			</trans-unit>
+			<trans-unit id="projekt.description">
+				<source>projekt</source>
+			</trans-unit>
+			<trans-unit id="fahrzeug.description">
+				<source>fahrzeug</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

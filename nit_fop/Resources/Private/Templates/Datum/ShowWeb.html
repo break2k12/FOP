@@ -1,0 +1,49 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    <div id="web-content">
+    <h1>{datumheute}</h1>
+
+    
+<f:for each="{zeilenheute}" as="zeileheute">
+
+    <f:cycle values="{0: 'odd', 1: 'even'}" as="zebraClass">
+	<li class="{zebraClass}">
+	    <f:if condition="{zeileheute.fahrzeug.fahrzeugname}==''">Kein Fahrzeug</f:if><f:else>{zeileheute.fahrzeug.fahrzeugname}</f:else> | {zeileheute.uhrzeit} | {zeileheute.projekt.projektname} | {zeileheute.bemerkung}
+	</li>
+    </f:cycle>	
+</f:for>
+
+     <h1>{datummorgen}</h1>
+    <f:for each="{zeilenmorgen}" as="zeilemorgen">
+
+    <f:cycle values="{0: 'odd', 1: 'even'}" as="zebraClass">
+	<li class="{zebraClass}">
+	    <f:if condition="{zeilemorgen.fahrzeug.fahrzeugname}==''">Kein Fahrzeug</f:if><f:else>{zeilemorgen.fahrzeug.fahrzeugname}</f:else>  | {zeilemorgen.uhrzeit} | {zeilemorgen.projekt.projektname} | {zeilemorgen.bemerkung}
+	</li>
+    </f:cycle>	
+</f:for>
+     
+     <f:link.external uri="http://p212670.mittwaldserver.info/typo3/index.php?id=1&tx_nitfop_nitfop[datum]=109&tx_nitfop_nitfop[admin]=1&tx_nitfop_nitfop[action]=show&tx_nitfop_nitfop[controller]=Datum">Admin</f:link.external>
+
+
+
+
+    
+    
+
+  
+</div>
+</f:section>

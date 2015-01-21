@@ -1,0 +1,19 @@
+#web-content {
+    width:640px !important;
+    margin: 0px auto;
+}
+.odd {
+    background-color:#fff;
+    border-bottom:2px solid #DDD;
+    margin-bottom: 6px;
+    padding-left:10px;
+    list-style: none;
+}
+
+.even {
+    
+    border-bottom:2px solid #DDD;
+    margin-bottom: 6px;
+    padding-left:10px;
+    list-style: none;
+}

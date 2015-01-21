@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T09:26:53Z" product-name="nit_fop">
+		<header/>
+		<body>
+			<trans-unit id="fahrername.description">
+				<source>fahrername</source>
+			</trans-unit>
+			<trans-unit id="handynummer.description">
+				<source>handynummer</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,40 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<f:flashMessages renderMode="div" />
+<div id="content"> 
+<div class="dark-matter">
+<h1>{datum.datum}</h1>
+<f:form action="createRow"  name="datum" object="{datum}" arguments="{fahrzeug : fahrzeug}" >
+    <label><span>Fahrzeug:</span><f:form.select id="fahrzeug" name="fahrzeug" options="{fahrzeuge}" optionValueField="uid" optionLabelField="fahrzeugname" prependOptionLabel="Kein Fahrzeug" /></label>
+    <input type="hidden" name="UserBrowser" id="datum" value="{datum.datum}">
+    <label><span>Projekt:</span><f:form.textfield id="projektname" name="projektname"/></label>
+    <f:widget.autocomplete for="projektname" objects="{projekte}" searchProperty="projektname" />
+    <label><span>Kommentar:</span><f:form.textfield name="kommentar" id="kommentar" /></label>
+    <label><span>Uhrzeit:</span><input id="uhrzeit" type="text" data-role="datebox" data-options='{"mode":"timebox", "overrideSetTimeButtonLabel":"OK","minuteStep": 10, "overrideTitleTimeDialogLabel":"Uhrzeit wählen"}' name="tx_nitfop_nitfop[uhrzeit]" value='08:00' >
+	
+
+<f:form.submit value="Speichern" class="button" id="absenden" />
+</f:form>
+<f:form action="show" arguments="{datefield : datum.datum }" > 
+<f:form.submit value="Zurück" class="button" />
+</f:form>
+</div>
+</div>
+
+
+</f:section>

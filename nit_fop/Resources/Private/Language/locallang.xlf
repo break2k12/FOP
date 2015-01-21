@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T09:26:53Z" product-name="nit_fop">
+		<header/>
+		<body>
+			<trans-unit id="tx_nitfop_domain_model_datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_datum.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_datum.zeile">
+				<source>Zeile</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile">
+				<source>Zeile</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile.uhrzeit">
+				<source>Uhrzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile.bemerkung">
+				<source>Bemerkung</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile.projekt">
+				<source>Projekt</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_zeile.fahrzeug">
+				<source>Fahrzeug</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_projekt">
+				<source>Projekt</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_projekt.projektname">
+				<source>Projektname</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrzeug">
+				<source>Fahrzeug</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrzeug.fahrzeugname">
+				<source>Fahrzeugname</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrzeug.fahrer">
+				<source>Fahrer</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrer">
+				<source>Fahrer</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrer.fahrername">
+				<source>Fahrername</source>
+			</trans-unit>
+			<trans-unit id="tx_nitfop_domain_model_fahrer.handynummer">
+				<source>Handynummer</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

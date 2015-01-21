@@ -1,0 +1,92 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+    <div id="content"> 
+    <h1>{datum.datum}</h1>
+<f:for each="{zeilen}" as="zeile">
+
+    <f:cycle values="{0: 'odd', 1: 'even'}" as="zebraClass">
+	<li class="{zebraClass}">
+	    <f:link.action action="edit" arguments="{zeile : zeile}">
+		<f:if condition="{zeile.fahrzeug.fahrzeugname}==''">Kein Fahrzeug</f:if><f:else>{zeile.fahrzeug.fahrzeugname}</f:else> | {zeile.uhrzeit}<br/>{zeile.projekt.projektname} - {zeile.bemerkung}
+	    </f:link.action>
+	</li>
+    </f:cycle>	
+</f:for>
+
+  <f:form action="newRow"  arguments="{datum : datum, datefield : datefield}" >
+      <f:form.submit value="Neue Zeile" class="button" />
+  </f:form> 
+
+<table style="width:100%">
+    <tr>
+	<td>
+    <f:form action="show" arguments="{datefield : gestern }" > 
+    <f:form.submit value="Tag zurück" id="dayback" class="button" />
+    </f:form>
+    </td>
+    <td>
+    <f:form action="show" arguments="{datefield : morgen }" > 
+    <f:form.submit value="Tag vor" id="dayforward" class="button" />
+    </f:form>
+    </td>
+</tr>
+</table>
+    <f:form action="show" arguments="{datefield : datefield }" > 
+	<input type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat":"%d.%m.%Y"}' name="tx_nitfop_nitfop[datefield]" value='{datum.datum}' >
+	
+	<f:form.submit value="Gehe zu Datum" class="button" />
+	
+    
+    
+    </f:form>
+    
+    <f:form action="sendAllSms" arguments="{datum : datum}" > 
+	<f:form.submit value="SMS versenden" class="button" id="SendSms" />
+    </f:form>
+    </div>
+    
+    
+    <script type="text/javascript">
+var uri = '<f:uri.action noCacheHash="1" action="sendSms" controller="Datum" pageType="1375437732"/>'
+
+$('#SendSms').click(function(){
+    if($("#keinesms").prop('checked') == true){
+
+	    var fahrzeug = $('#fahrzeug').val();
+	    var projektname = $('#projektname').val();
+	    var kommentar = $('#kommentar').val();
+	    var uhrzeit = $('#uhrzeit').val();
+	    var datum = $('#datum').val();
+	    $.ajax({
+	    url: uri,
+	    data:{
+		"tx_nitfop_nitfop[fahrzeug]":fahrzeug,
+		"tx_nitfop_nitfop[projektname]":projektname,
+		"tx_nitfop_nitfop[kommentar]":kommentar,
+		"tx_nitfop_nitfop[uhrzeit]":uhrzeit,
+		"tx_nitfop_nitfop[datum]":datum,
+		"tx_nitfop_nitfop[modus]": "Aenderung",
+	    }
+	    });	
+    }
+
+});
+</script>
+  
+
+</f:section>
